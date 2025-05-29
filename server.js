@@ -7,18 +7,18 @@ const swaggerSpecs = require('./src/configs/swagger');
 
 const app = express();
 
-//parser para requisições content-type:
-//application/x-www-form-urlencoded-json
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
-    app.use(cors());
-    next();
-});
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));  
+// Configure CORS
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'PUT', 'POST', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'authorization']
+}));
 
-//Linhas das rotas
+// Configure body parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
+// Routes
 require("./src/routes/produto.routes") (app);
 require("./src/routes/pedido.routes.js")(app);
 require("./src/routes/produto_pedido.routes.js")(app);
@@ -31,6 +31,7 @@ app.get("/", (req, res) =>{
         message: "Bem vindo à API MVC do SENAC"
     });
 });
+
 app.listen(3001, () => {
     console.log("Servidor rodando na porta 3001");
 });

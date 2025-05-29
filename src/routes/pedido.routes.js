@@ -18,12 +18,12 @@
  *           schema:
  *             type: object
  *             properties:
- *               usuario_id:
+ *               idpedido:
  *                 type: integer
  *               status:
- *                 type: string
- *               valor_total:
- *                 type: number
+ *                 type: integer
+ *               hora:
+ *                 type: date
  *     responses:
  *       201:
  *         description: Pedido criado com sucesso
@@ -73,9 +73,9 @@
  *             type: object
  *             properties:
  *               status:
- *                 type: string
- *               valor_total:
- *                 type: number
+ *                 type: integer
+ *               hora:
+ *                 type: date
  *     responses:
  *       200:
  *         description: Pedido atualizado com sucesso
@@ -96,10 +96,12 @@
 module.exports = app => {
     const pedidoController =
         require("../controllers/pedido.controller.js");
-    app.post("/pedidos", pedidoController.create);
-    app.get("/pedidos", pedidoController.findAll);
-    app.get("/pedidos/:id", pedidoController.findById);
-    app.put("/pedidos/:id", pedidoController.update);
-    app.delete("/pedidos/:id", pedidoController.delete);
-    app.delete("/pedidos", pedidoController.deleteAll);
+    const auth = require("../middlewares/auth_jwt_middleware");
+
+    app.post("/pedidos", [auth.verifyToken], pedidoController.create);
+    app.get("/pedidos", [auth.verifyToken], pedidoController.findAll);
+    app.get("/pedidos/:id", [auth.verifyToken], pedidoController.findById);
+    app.put("/pedidos/:id", [auth.verifyToken], pedidoController.update);
+    app.delete("/pedidos/:id", [auth.verifyToken], pedidoController.delete);
+    app.delete("/pedidos", [auth.verifyToken], pedidoController.deleteAll);
 }

@@ -122,11 +122,12 @@
 
 module.exports = app => {
     const usuarioController = require("../controllers/usuario.controller");
+    const auth = require("../middlewares/auth_jwt_middleware");
 
     app.post("/signup", usuarioController.signUp);
     app.post("/signin", usuarioController.signIn);
-    app.get("/usuarios", usuarioController.findAll);
-    app.get("/usuarios/:id", usuarioController.findById);
-    app.put("/usuarios/:id", usuarioController.update);
-    app.delete("/usuarios/:id", usuarioController.delete);
+    app.get("/usuarios", [auth.verifyToken], usuarioController.findAll);
+    app.get("/usuarios/:id", [auth.verifyToken], usuarioController.findById);
+    app.put("/usuarios/:id", [auth.verifyToken], usuarioController.update);
+    app.delete("/usuarios/:id", [auth.verifyToken], usuarioController.delete);
 }

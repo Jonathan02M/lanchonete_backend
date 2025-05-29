@@ -18,14 +18,12 @@
  *           schema:
  *             type: object
  *             properties:
- *               pedido_id:
+ *               produtos_idproduto:
  *                 type: integer
- *               produto_id:
+ *               pedidos_idpedido:
  *                 type: integer
- *               quantidade:
- *                 type: integer
- *               valor_unitario:
- *                 type: number
+ *               observacao:
+ *                 type: string
  *     responses:
  *       201:
  *         description: Produto adicionado ao pedido com sucesso
@@ -74,10 +72,12 @@
  *           schema:
  *             type: object
  *             properties:
- *               quantidade:
+ *               produtos_idproduto:
  *                 type: integer
- *               valor_unitario:
- *                 type: number
+ *               pedidos_idpedido:
+ *                 type: integer
+ *               observacao:
+ *                 type: string
  *     responses:
  *       200:
  *         description: Produto em pedido atualizado com sucesso
@@ -98,10 +98,12 @@
 module.exports = app => {
     const produto_pedidoController =
         require("../controllers/produto_pedido.controller.js");
-    app.post("/produtos_pedidos", produto_pedidoController.create);
-    app.get("/produtos_pedidos", produto_pedidoController.findAll);
-    app.get("/produtos_pedidos/:id", produto_pedidoController.findById);
-    app.put("/produtos_pedidos/:id", produto_pedidoController.update);
-    app.delete("/produtos_pedidos/:id", produto_pedidoController.delete);
-    app.delete("/produtos_pedidos", produto_pedidoController.deleteAll);
+    const auth = require("../middlewares/auth_jwt_middleware");
+
+    app.post("/produtos_pedidos", [auth.verifyToken], produto_pedidoController.create);
+    app.get("/produtos_pedidos", [auth.verifyToken], produto_pedidoController.findAll);
+    app.get("/produtos_pedidos/:id", [auth.verifyToken], produto_pedidoController.findById);
+    app.put("/produtos_pedidos/:id", [auth.verifyToken], produto_pedidoController.update);
+    app.delete("/produtos_pedidos/:id", [auth.verifyToken], produto_pedidoController.delete);
+    app.delete("/produtos_pedidos", [auth.verifyToken], produto_pedidoController.deleteAll);
 }

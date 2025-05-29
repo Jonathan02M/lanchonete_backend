@@ -32,9 +32,7 @@
  *             properties:
  *               nome:
  *                 type: string
- *               descricao:
- *                 type: string
- *               preco:
+ *               valor:
  *                 type: number
  *     responses:
  *       201:
@@ -94,9 +92,7 @@
  *             properties:
  *               nome:
  *                 type: string
- *               descricao:
- *                 type: string
- *               preco:
+ *               valor:
  *                 type: number
  *     responses:
  *       200:

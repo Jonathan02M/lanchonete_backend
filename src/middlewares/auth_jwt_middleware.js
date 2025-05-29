@@ -3,12 +3,15 @@ const config = require("../configs/auth.config");
 const usuarioModel = require("../models/usuario.model");
 
 verifyToken = (req, res, next) => {
-    const { authorization } = req.headers;
-    console.log(authorization);
+    const authorization = req.headers.authorization || req.headers.Authorization;
 
     if (!authorization) {
         return res.status(403).send({
             message: "Não possui token para autenticação."
+        });
+    } else if (!authorization.toLowerCase().startsWith('bearer ')) {
+        return res.status(401).send({
+            message: "Token format inválido. Use o formato 'Bearer <token>'"
         });
     } else {
         const [, token] = authorization.split(' ');
@@ -48,6 +51,7 @@ isBalcao = (req, res, next) => {
         }
     });
 }
+
 isCozinha = (req, res, next) => {
     usuarioModel.findById(req.id, (err, data) => {
         if (data.tipo == 1 || data.tipo == 3) {
@@ -59,6 +63,7 @@ isCozinha = (req, res, next) => {
         }
     });
 }
+
 module.exports = {
     verifyToken: verifyToken,
     isAdmin: isAdmin,
