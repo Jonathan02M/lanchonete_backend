@@ -1,4 +1,4 @@
 //Palavra secreta (segredo)
 module.exports = { 
-    secret : "senac-chave-secreta"
+    secret : process.env.DB_HOST || "senac-chave-secreta"
 }

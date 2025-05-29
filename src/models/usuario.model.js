@@ -46,7 +46,6 @@ Usuario.getAll = result => {
             result(null, err);
             return;
         }
-        console.log("usuarios: ", res);
         result(null, res);
     })
 };
