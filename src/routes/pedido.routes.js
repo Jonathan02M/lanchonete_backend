@@ -18,12 +18,14 @@
  *           schema:
  *             type: object
  *             properties:
- *               idpedido:
- *                 type: integer
  *               status:
  *                 type: integer
+ *                 description: "Status do Pedido - Codigos: 1 - Aberto | 2 - Preparando | 3 - Pronto"
+ *                 example: "1"
  *               hora:
- *                 type: date
+ *                 type: date-time
+ *                 description: "Data e hora de criação do pedido"
+ *                 example: "2025-05-29 14:30:00"
  *     responses:
  *       201:
  *         description: Pedido criado com sucesso
@@ -74,8 +76,12 @@
  *             properties:
  *               status:
  *                 type: integer
+ *                 description: "Status do Pedido - Codigos: 1 - Aberto | 2 - Preparando | 3 - Pronto"
+ *                 example: "1"
  *               hora:
- *                 type: date
+ *                 type: date-time
+ *                 description: "Data e hora de criação do pedido"
+ *                 example: "2025-05-29 14:30:00"
  *     responses:
  *       200:
  *         description: Pedido atualizado com sucesso

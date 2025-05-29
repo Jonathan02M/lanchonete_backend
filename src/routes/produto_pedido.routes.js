@@ -20,10 +20,16 @@
  *             properties:
  *               produtos_idproduto:
  *                 type: integer
+ *                 description: "Id do produto - deve estar cadastrado na tabela produtos"
+ *                 example: "1" 
  *               pedidos_idpedido:
  *                 type: integer
+ *                 description: "Id do pedido - deve estar cadastrado na tabela pedidos"
+ *                 example: "1" 
  *               observacao:
  *                 type: string
+ *                 description: "Observação no pedido"
+ *                 example: "Não colocar maionese." 
  *     responses:
  *       201:
  *         description: Produto adicionado ao pedido com sucesso
@@ -74,10 +80,16 @@
  *             properties:
  *               produtos_idproduto:
  *                 type: integer
+ *                 description: "Id do produto - deve estar cadastrado na tabela produtos"
+ *                 example: "1" 
  *               pedidos_idpedido:
  *                 type: integer
+ *                 description: "Id do pedido - deve estar cadastrado na tabela pedidos"
+ *                 example: "1" 
  *               observacao:
  *                 type: string
+ *                 description: "Observação no pedido"
+ *                 example: "Não colocar maionese." 
  *     responses:
  *       200:
  *         description: Produto em pedido atualizado com sucesso

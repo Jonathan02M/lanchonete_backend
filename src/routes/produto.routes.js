@@ -32,8 +32,12 @@
  *             properties:
  *               nome:
  *                 type: string
+ *                 description: "Nome do pedido"
+ *                 example: "X-Salada" 
  *               valor:
  *                 type: number
+ *                 description: "Valor do pedido."
+ *                 example: "10.00"
  *     responses:
  *       201:
  *         description: Produto criado com sucesso
@@ -92,8 +96,12 @@
  *             properties:
  *               nome:
  *                 type: string
+ *                 description: "Nome do pedido"
+ *                 example: "X-Salada" 
  *               valor:
  *                 type: number
+ *                 description: "Valor do pedido."
+ *                 example: "10.00"
  *     responses:
  *       200:
  *         description: Produto atualizado com sucesso

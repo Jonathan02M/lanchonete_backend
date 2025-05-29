@@ -20,12 +20,20 @@
  *             properties:
  *               nome:
  *                 type: string
+ *                 description: "Nome do usuário"
+ *                 example: "João da Silva"
  *               email:
  *                 type: string
+ *                 description: "Email do usuário"
+ *                 example: "joao@gmail.com" 
  *               senha:
  *                 type: string
+ *                 description: "Senha do usuário"
+ *                 example: "QWEasd123456"
  *               tipo:
  *                 type: string
+ *                 description: "Tipo do usuário. Administrador: 1. Balcão: 2. Cozinha: 3"
+ *                 example: "1"
  *     responses:
  *       201:
  *         description: Usuário criado com sucesso
@@ -46,8 +54,12 @@
  *             properties:
  *               email:
  *                 type: string
+ *                 description: "Email do usuário"
+ *                 example: "joao@gmail.com" 
  *               senha:
  *                 type: string
+ *                 description: "Senha do usuário"
+ *                 example: "QWEasd123456"
  *     responses:
  *       200:
  *         description: Login realizado com sucesso
@@ -97,12 +109,20 @@
  *             properties:
  *               nome:
  *                 type: string
+ *                 description: "Nome do usuário"
+ *                 example: "João da Silva"
  *               email:
  *                 type: string
+ *                 description: "Email do usuário"
+ *                 example: "joao@gmail.com" 
  *               senha:
  *                 type: string
+ *                 description: "Senha do usuário"
+ *                 example: "QWEasd123456"
  *               tipo:
  *                 type: string
+ *                 description: "Tipo do usuário. Administrador: 1. Balcão: 2. Cozinha: 3"
+ *                 example: "1"
  *     responses:
  *       200:
  *         description: Usuário atualizado com sucesso
