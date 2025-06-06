@@ -33,13 +33,13 @@ exports.findById = (req, res) => {
 }
 //Cria novo pedido no banco
 exports.create = (req, res) => {
-    if (!req.body.hora || !req.body.status) {
+    if (!req.body.status) {
         res.status(400).send({
             message: "Conteúdo do corpo da requisição vazia."
         });
     } else {
         const pedido = new PedidoModel({
-            hora: req.body.hora,
+            hora: new Date(),
             status: req.body.status
         });
         PedidoModel.create(pedido, (err, data) => {
@@ -55,13 +55,13 @@ exports.create = (req, res) => {
 }
 //Atualizar pedido por id
 exports.update = (req, res) => {
-    if (!req.body.hora || !req.body.status) {
+    if (!req.body.status) {
         res.status(400).send({
             message: "Conteúdo do corpo da requisição vazia."
         });
     } else {
         const pedido = new PedidoModel({
-            hora: req.body.hora,
+            hora: new Date(),
             status: req.body.status
         });
         PedidoModel.updateById(req.params.id, pedido, (err, data) => {
